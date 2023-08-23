@@ -28,7 +28,11 @@ jobs:
           java-version: '17'
       # Runs a single command using the runners shell
       - name: Live Execution
-        run: java -jar kafkactl.jar apply -f teams/
+        run: |
+          for f in ./teams/*.yml
+          do
+            java -jar kafkactl.jar apply -f $f -n $(basename $f .yml)
+          done
         env: # Or as an environment variable
           KAFKACTL_API: http://34.140.204.135:7777
           KAFKACTL_USER_TOKEN: ${{ secrets.GL_TOKEN }}

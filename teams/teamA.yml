@@ -6,7 +6,7 @@ metadata:
   cluster: local
   labels:
     description: Team A
-    ldap-group: LDAP-TEAM-A-OPS
+    ldap-group: LDAP-TEAM-A
 spec:
   kafkaUser: sa-team-a
 ---
@@ -17,7 +17,7 @@ metadata:
   namespace: teamA
 spec:
   resourceType: TOPIC
-  resource: abc.
+  resource: teamA-
   resourcePatternType: PREFIXED
   permission: OWNER
   grantedTo: teamA
@@ -29,7 +29,7 @@ metadata:
   namespace: teamA
 spec:
   resourceType: GROUP
-  resource: abc.
+  resource: teamA-
   resourcePatternType: PREFIXED
   permission: OWNER
   grantedTo: teamA
@@ -41,7 +41,7 @@ metadata:
   namespace: teamA
 spec:
   resourceType: CONNECT
-  resource: abc.
+  resource: teamA-
   resourcePatternType: PREFIXED
   permission: OWNER
   grantedTo: teamA

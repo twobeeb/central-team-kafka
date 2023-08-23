@@ -1,0 +1,22 @@
+---
+apiVersion: v1
+kind: KafkaCluster
+metadata:
+  name: pkc-lzoyy
+  labels:
+    friendly-name: Confluent pkc-lzoyy
+spec:
+    bootstrapServers: "pkc-lzoyy.europe-west6.gcp.confluent.cloud:9092"
+    properties:
+      client.id: conduktor
+      security.protocol: SASL_SSL
+      sasl.mechanism: PLAIN
+      sasl.jaas.config: | 
+          org.apache.kafka.common.security.plain.PlainLoginModule
+          required username='ApiKey'
+          password='ApiSecret';
+    schemaRegistry:
+      url: "https://pkc-lzoyy.europe-west6.gcp.confluent.cloud"
+      security:
+        username: ApiKey
+        password: ApiSecret

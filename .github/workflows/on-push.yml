@@ -31,6 +31,8 @@ jobs:
         run: |
           for f in teams/
           do
+            echo $f
+            echo $(basename $f .yml)
             java -jar kafkactl.jar apply -f $f -n $(basename $f .yml)
           done
         env: # Or as an environment variable

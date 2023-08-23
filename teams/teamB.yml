@@ -1,0 +1,47 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: teamB
+  cluster: local
+  labels:
+    description: Team B
+    ldap-group: LDAP-TEAM-B
+spec:
+  kafkaUser: sa-team-a
+---
+apiVersion: v1
+kind: AccessControlEntry
+metadata:
+  name: myTopicAcl
+  namespace: teamB
+spec:
+  resourceType: TOPIC
+  resource: teamB-
+  resourcePatternType: PREFIXED
+  permission: OWNER
+  grantedTo: teamB
+---
+apiVersion: v1
+kind: AccessControlEntry
+metadata:
+  name: myGroupAcl
+  namespace: teamB
+spec:
+  resourceType: GROUP
+  resource: teamB-
+  resourcePatternType: PREFIXED
+  permission: OWNER
+  grantedTo: teamB
+---
+apiVersion: v1
+kind: AccessControlEntry
+metadata:
+  name: myConnectAcl
+  namespace: teamB
+spec:
+  resourceType: CONNECT
+  resource: teamB-
+  resourcePatternType: PREFIXED
+  permission: OWNER
+  grantedTo: teamB

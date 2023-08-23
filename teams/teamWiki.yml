@@ -1,0 +1,59 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: teamWiki
+  cluster: local
+  labels:
+    description: Team Wikipedia
+    ldap-group: readers
+spec:
+  kafkaUser: sa-team-wiki
+---
+apiVersion: v1
+kind: AccessControlEntry
+metadata:
+  name: myTopicAcl
+  namespace: teamWiki
+spec:
+  resourceType: TOPIC
+  resource: wiki
+  resourcePatternType: PREFIXED
+  permission: OWNER
+  grantedTo: teamWiki
+---
+apiVersion: v1
+kind: AccessControlEntry
+metadata:
+  name: myTopicAcl2
+  namespace: teamWiki
+spec:
+  resourceType: TOPIC
+  resource: WIKI
+  resourcePatternType: PREFIXED
+  permission: OWNER
+  grantedTo: teamWiki
+---
+apiVersion: v1
+kind: AccessControlEntry
+metadata:
+  name: myGroupAcl
+  namespace: teamWiki
+spec:
+  resourceType: GROUP
+  resource: wiki
+  resourcePatternType: PREFIXED
+  permission: OWNER
+  grantedTo: teamWiki
+---
+apiVersion: v1
+kind: AccessControlEntry
+metadata:
+  name: myConnectAcl
+  namespace: teamWiki
+spec:
+  resourceType: CONNECT
+  resource: wiki
+  resourcePatternType: PREFIXED
+  permission: OWNER
+  grantedTo: teamWiki

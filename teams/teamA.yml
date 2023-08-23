@@ -8,7 +8,7 @@ metadata:
     description: Team A
     ldap-group: LDAP-TEAM-A-OPS
 spec:
-  kafkaUser: user1
+  kafkaUser: sa-team-a
 ---
 apiVersion: v1
 kind: AccessControlEntry

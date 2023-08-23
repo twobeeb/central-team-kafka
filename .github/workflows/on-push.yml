@@ -29,7 +29,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: Live Execution
         run: |
-          for f in teams/
+          for f in ./teams/*.yml
           do
             echo $f
             echo $(basename $f .yml)

@@ -6,7 +6,7 @@ metadata:
   cluster: local
   labels:
     description: Team A
-    ldap-group: LDAP-TEAM-A-OPS
+    ldap-group: LDAP-TEAM-A-OPS2
 spec:
   kafkaUser: sa-team-a
 ---

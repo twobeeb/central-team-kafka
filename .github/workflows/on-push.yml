@@ -6,10 +6,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: conduktor/conduktor-ctl
+    container: twobeeb/conduktor-ctl:0.1.2
     steps:
       - uses: actions/checkout@v3
-      - run: apply -f teams/
+      - run: /bin/conduktor apply -f teams/
         env:
           CDK_BASE_URL: http://34.140.204.135:8079/
           CDK_TOKEN: ${{ secrets.CONDUKTOR_TOKEN }}

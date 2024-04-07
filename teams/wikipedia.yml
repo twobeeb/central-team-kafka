@@ -1,0 +1,43 @@
+---
+apiVersion: "v1"
+kind: "Application"
+metadata:
+  name: "wiki-app"
+spec:
+  title: "Wiki App"
+  description: "Wikipedia website"
+  owner: "admin"            # technical-id of Console Group
+---
+# Application Instances (environment)
+apiVersion: "v1"
+kind: "ApplicationInstance"
+metadata:
+  application: "wiki-app"
+  name: "wiki-app-prod"
+spec:
+  cluster: "shadow-it"
+  serviceAccount: "sa-wiki-dev"
+  resources:
+    - type: TOPIC
+      name: "WIKI"
+      patternType: PREFIXED
+    - type: SUBJECT
+      name: "WIKI"
+      patternType: PREFIXED
+    - type: GROUP
+      name: "WIKI"
+      patternType: PREFIXED
+---
+apiVersion: v1
+kind: "ApplicationInstancePermission"
+metadata:
+  application: "wiki-app"
+  appInstance: "wiki-app-prod"
+  name: "wiki-prod-to-click"
+spec:
+  resource:
+    type: TOPIC
+    name: "WIKI"
+    patternType: PREFIXED
+  permission: WRITE
+  grantedTo: "clickstream-app-prod3"

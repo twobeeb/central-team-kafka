@@ -9,7 +9,7 @@ jobs:
     container: conduktor/conduktor-ctl
     steps:
       - uses: actions/checkout@v3
-      - run: conduktor apply -f teams/
+      - run: apply -f teams/
         env:
           CDK_BASE_URL: http://34.140.204.135:8079/
           CDK_TOKEN: ${{ secrets.CONDUKTOR_TOKEN }}
